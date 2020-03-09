@@ -1,0 +1,48 @@
+<h4>Cadastro de Produtos</h4>
+
+<label for="fcodigo">Código:</label><br>
+<input type="text" [(ngModel)]="produto.codigo" />
+<br />
+<label for="fname">Nome:</label><br>
+<input type="text" [(ngModel)]="produto.nome" />
+<br />
+<label for="fname">Descricao:</label><br>
+<input type="text" [(ngModel)]="produto.descricao" />
+<br />
+<label for="fname">Quantidade:</label><br>
+<input type="text" [(ngModel)]="produto.quantidade" />
+<br />
+Data
+<input type="date" placeholder="Insira Data" class="form-control" id="dataNascimento" 
+required [(ngModel)]="produto.dataValidade" name="dataNascimento" bsDatepicker>
+<br>
+Unidade de medida
+<select [(ngModel)]="produto.unidadeMedida">
+    <option *ngFor="let unidade of listaUnidades" [ngValue]="unidade">{{unidade}}</option>
+</select>
+<button (click)="incluirProduto()">incluir</button>
+
+
+<table border="1">
+    <tr>
+        <th>Codigo</th>
+        <th>Nome</th>
+        <th>Data de Validade</th>
+        <th>Data de descricao</th>
+        <th>Data de quantidade</th>
+        <th>Unidade</th>
+    
+
+    </tr>
+    <tr *ngFor="let produto of listaProduto">
+        <td>{{produto.codigo}}</td>
+        <td>{{produto.nome}}</td>
+        <td>{{produto.descricao}}</td>
+        <td>{{produto.dataValidade}}</td>
+        <td>{{produto.quantidade}}</td>
+        <td>{{produto.unidadeMedida}}</td>
+        <td style="cursor: pointer;"><a (click)="removerProduto(produto)">x</a></td>
+    </tr>
+
+
+</table>

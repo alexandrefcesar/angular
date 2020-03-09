@@ -1,0 +1,50 @@
+<app-layout>
+    <!--<p>{{titulo}}</p>-->
+
+    <h4 [textContent]="titulo"></h4>
+
+    <label for="fcodigo">Código:</label><br>
+    <input type="text" [(ngModel)]="pessoa.codigo" />
+    <br />
+    <label for="fname">Nome:</label><br>
+    <input type="text" [(ngModel)]="pessoa.nome" />
+    <br />
+    <label for="ftelefone">Telefone:</label><br>
+    <input type="text" [(ngModel)]="pessoa.telefone" ng-pattern="^\(?\d{2}\)?[\s-]?[\s9]?\d{4}-?\d{4}$" />
+    <br />
+    <label for="fdatadenascimento">Data de Nascimento:</label><br>
+    <input type="date" placeholder="Insira Data" class="form-control" id="dataNascimento" 
+    required [(ngModel)]="pessoa.dataNascimento" name="dataNascimento" bsDatepicker>
+   <!--<input type="text" [(ngModel)]="pessoa.dataNascimento" />--> 
+    <br />
+    <label for="fendereco">Endereço:</label><br>
+    <input type="text" [(ngModel)]="pessoa.endereco" />
+    <br />
+    <label for="fbairro">Bairro:</label><br>
+    <input type="text" [(ngModel)]="pessoa.bairro" />
+    <br />
+    <label for="festado">Estado</label><br>
+    <select [(ngModel)]="pessoa.estado" (ngModelChange)="carregarCidade()">
+            <option *ngFor="let estado of listaEstado"   [ngValue]="estado">{{estado}}</option>
+    </select>
+    <br>
+    <label for="fcidade">Cidade:</label><br>
+    <select [(ngModel)]="pessoa.cidade">
+        <option *ngFor="let cidade  of listaMunicipios" [ngValue]="cidade.nome + ' ' +cidade.codigo">{{cidade.nome}}</option>
+</select>
+
+    <br />
+    <div>
+        <label for="fativo">Ativo</label><br>
+        <input type="radio" [(ngModel)]="pessoa.ativo" [value]="true" /> sim
+        <input type="radio" [(ngModel)]="pessoa.ativo" [value]="false" /> não
+        <br>
+    </div>
+    <button (click)="imprimir()">Cadastrar</button>
+    <button (click)="incluir()">incluir</button>
+    <br />
+    <button (click)="inverter()">Mostrar</button>
+
+    <h3 *ngIf="mostrar">mostrar</h3>
+
+</app-layout>
