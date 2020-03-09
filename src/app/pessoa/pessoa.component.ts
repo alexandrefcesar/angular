@@ -62,6 +62,9 @@ export class PessoaComponent implements OnInit {
     this.listaPessoa = this.listaPessoa.filter(
       obj => obj !== pessoa);
   }
+  adicionarPessoa(pessoa){
+    this.listaPessoa.push(pessoa)
+  }
   
 
   

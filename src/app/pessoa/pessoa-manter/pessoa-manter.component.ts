@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Pessoa } from '../pessoa';
+
 @Component({
   selector: 'app-pessoa-manter',
   templateUrl: './pessoa-manter.component.html',
@@ -9,6 +10,7 @@ export class PessoaManterComponent implements OnInit {
   texto: string = 'ALEXANDRE';
   titulo: string = 'Cadastro Pessoa';
   listaEstado: string[] = ["AC","PB","PE"];
+  @Output() pessoaEmitir: EventEmitter<Pessoa> = new EventEmitter();
   pessoa: Pessoa = new Pessoa();
   mostrar: boolean = false;
   listaMunicipios: any[]= [
@@ -58,7 +60,8 @@ export class PessoaManterComponent implements OnInit {
 
   }
   incluir() {
-    this.listaPessoa.push(this.pessoa)
+   // this.listaPessoa.push(this.pessoa)
+   this.pessoaEmitir.emit(this.pessoa);
     this.pessoa = new Pessoa()
   }
   ngOnInit(): void {
