@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { Pessoa } from '../pessoa';
 
 @Component({
@@ -11,7 +11,7 @@ export class PessoaManterComponent implements OnInit {
   titulo: string = 'Cadastro Pessoa';
   listaEstado: string[] = ["AC","PB","PE"];
   @Output() pessoaEmitir: EventEmitter<Pessoa> = new EventEmitter();
-  pessoa: Pessoa = new Pessoa();
+  @Input() pessoa: Pessoa = new Pessoa();
   mostrar: boolean = false;
   listaMunicipios: any[]= [
     {codigo:"1",nome:"Patos"},
@@ -70,6 +70,7 @@ export class PessoaManterComponent implements OnInit {
     this.listaPessoa = this.listaPessoa.filter(
       obj => obj !== pessoa);
   }
+
   carregarCidade(){
 
     if(this.pessoa.estado == 'PB'){

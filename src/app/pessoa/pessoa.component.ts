@@ -65,6 +65,10 @@ export class PessoaComponent implements OnInit {
   adicionarPessoa(pessoa){
     this.listaPessoa.push(pessoa)
   }
+  editar(pessoa){
+    this.pessoa  = pessoa;
+
+  }
   
 
   

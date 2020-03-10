@@ -9,6 +9,7 @@
             <th>Estado</th>
             <th>Cidade</th>
             <th>Remover</th>
+            <th>Editar</th>
 
         </tr>
         <tr *ngFor="let pessoa of listaPessoa">
@@ -20,7 +21,8 @@
             <td>{{pessoa.estado}}</td>
             <td>{{pessoa.cidade}}</td>
             <td style="cursor: pointer;"><a (click)="remover(pessoa)">x</a></td>
+            <td style="cursor: pointer;"><a (click)="editar(pessoa)">editar</a></td>
         </tr>
     </table>
 </app-layout>
-<app-pessoa-manter (pessoaEmitir)= "adicionarPessoa($event)"></app-pessoa-manter>
+<app-pessoa-manter [pessoa]="pessoa" (pessoaEmitir)= "adicionarPessoa($event)" ></app-pessoa-manter>
