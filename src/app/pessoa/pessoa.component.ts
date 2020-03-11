@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { Pessoa } from './Pessoa';
 @Component({
   selector: 'app-pessoa',
@@ -8,6 +8,7 @@ import { Pessoa } from './Pessoa';
 export class PessoaComponent implements OnInit {
   titulo: string = 'Cadastro Pessoa';
   listaEstado: string[] = ["AC","PB","PE"];
+  operacao: string = 'pesquisar';
   
   listaMunicipios: any[]= [
     {codigo:"1",nome:"Patos"},
@@ -54,9 +55,12 @@ export class PessoaComponent implements OnInit {
 
   }
   inverter() {
-    this.mostrar = !this.mostrar;
+    // this.mostrar = !this.mostrar;
+    this.operacao = 'incluir';
 
   }
+ 
+
  
   remover(pessoa){
     this.listaPessoa = this.listaPessoa.filter(
@@ -67,6 +71,7 @@ export class PessoaComponent implements OnInit {
   }
   editar(pessoa){
     this.pessoa  = pessoa;
+    this.operacao = 'alterar';
 
   }
   

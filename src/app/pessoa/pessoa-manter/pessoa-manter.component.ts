@@ -12,7 +12,11 @@ export class PessoaManterComponent implements OnInit {
   listaEstado: string[] = ["AC","PB","PE"];
   @Output() pessoaEmitir: EventEmitter<Pessoa> = new EventEmitter();
   @Input() pessoa: Pessoa = new Pessoa();
-  mostrar: boolean = false;
+  @Input() mostrar: boolean = false;
+  @Input() volta: boolean = true;
+  @Output() voltaEmitir: EventEmitter<boolean> = new EventEmitter();
+  @Input() operacao: string;
+  @Output() retornoOperacao: EventEmitter<string> = new EventEmitter();
   listaMunicipios: any[]= [
     {codigo:"1",nome:"Patos"},
     {codigo:"2",nome:"Santa Luzia"},
@@ -59,10 +63,16 @@ export class PessoaManterComponent implements OnInit {
     this.mostrar = !this.mostrar;
 
   }
+  vol() {
+    // this.voltaEmitir.emit(false);
+    this.retornoOperacao.emit('pesquisar');
+
+  }
   incluir() {
    // this.listaPessoa.push(this.pessoa)
    this.pessoaEmitir.emit(this.pessoa);
     this.pessoa = new Pessoa()
+  
   }
   ngOnInit(): void {
   }

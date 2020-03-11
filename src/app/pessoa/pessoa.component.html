@@ -1,5 +1,5 @@
-
-<app-layout>
+<!-- <app-layout *ngIf="!mostrar">-->
+    <app-layout *ngIf="operacao=='pesquisar'">  
     <table border="1">
         <tr>
             <th>Codigo</th>
@@ -24,5 +24,9 @@
             <td style="cursor: pointer;"><a (click)="editar(pessoa)">editar</a></td>
         </tr>
     </table>
+    <button (click)="inverter()">Incluir</button>
 </app-layout>
-<app-pessoa-manter [pessoa]="pessoa" (pessoaEmitir)= "adicionarPessoa($event)" ></app-pessoa-manter>
+
+<app-pessoa-manter [mostrar]="mostrar" [operacao]="operacao" [pessoa]="pessoa" 
+(voltaEmitir)="mostrar=$event"
+    (pessoaEmitir)="adicionarPessoa($event)" (retornoOperacao)="operacao=$event"></app-pessoa-manter>
