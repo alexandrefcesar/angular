@@ -6,9 +6,7 @@ import { LayoutComponent } from './layout/layout.component';
 import { HeadComponent } from './head/head.component';
 import { BarraLateralComponent } from './barra-lateral/barra-lateral.component';
 import { PessoaComponent } from './pessoa/pessoa.component';
-import { ProdutoComponent } from './produto/produto.component';
-import { PessoaManterComponent } from './pessoa/pessoa-manter/pessoa-manter.component';
-
+import { BsLocaleService, defineLocale } from 'ngx-bootstrap';
 @NgModule({
   declarations: [
     AppComponent,
@@ -16,15 +14,12 @@ import { PessoaManterComponent } from './pessoa/pessoa-manter/pessoa-manter.comp
     HeadComponent,
     BarraLateralComponent,
   
-    PessoaComponent,
-  
-    ProdutoComponent,
-  
-    PessoaManterComponent
+    PessoaComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    BsLocaleService
   ],
   providers: [],
   bootstrap: [AppComponent]

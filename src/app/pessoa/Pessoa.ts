@@ -9,7 +9,4 @@ export class Pessoa{
    estado:string;
    ativo:boolean;
 
-
-
-
 }
